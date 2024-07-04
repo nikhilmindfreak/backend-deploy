@@ -126,7 +126,7 @@ resource "aws_autoscaling_group" "backend" {
   name                      = "${var.project_name}-${var.environment}-${var.common_tags.Component}"
   max_size                  = 5
   min_size                  = 1
-  health_check_grace_period = 60
+  health_check_grace_period = 100
   health_check_type         = "ELB"
   desired_capacity          = 1
   target_group_arns = [aws_lb_target_group.backend.arn]
@@ -173,7 +173,7 @@ resource "aws_autoscaling_policy" "backend" {
       predefined_metric_type = "ASGAverageCPUUtilization"  # the metric is cpu utilization
     }
 
-    target_value = 10.0  # we gave 10 to check and generate new instance 
+    target_value = 85.0  # we gave 70 to check cpu % and generate new instance 
   }
 }
 
