@@ -19,6 +19,7 @@ variable "zone_name" {
   default = "devopsme.online"
 }
 
+# created this as part of jenkins CD
 variable "app_version" {  # we added version now with nexus and vesrion control
  
 }
